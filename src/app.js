@@ -12,10 +12,10 @@ app.use(express.json());
 dotenv.config();
 const db = await dbConnection();
 
-app.post("/cadastro", postCadastro(req, res, db));
-app.post("/login", postLogin(req, res, db));
-app.post("/nova-transacao/:tipo", postNovaTransacao(req, res, db));
-app.get("/home", getHome(req, res, db));
+app.post("/cadastro", (req, res) => postCadastro(req, res, db));
+app.post("/login", (req, res) => postLogin(req, res, db));
+app.post("/nova-transacao/:tipo", (req, res) => postNovaTransacao(req, res, db));
+app.get("/home", (req, res) => getHome(req, res, db));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
