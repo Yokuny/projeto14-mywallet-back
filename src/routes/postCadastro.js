@@ -1,4 +1,6 @@
 import { cadastradoSchema } from "../scripts/shema.js";
+import bcrypt from "bcrypt";
+
 const postCadastro = async (req, res, db) => {
   const { name, email, password } = req.body;
   console.log(req.body);
@@ -12,7 +14,8 @@ const postCadastro = async (req, res, db) => {
     if (Registered) {
       return res.status(409).send({ message: "Email already registered" });
     }
-    await db.collection("users").insertOne({ email, password });
+    const crypPass = bcrypt.hashSync(password, 10);
+    await db.collection("users").insertOne({ name, email, password: crypPass });
     return res.status(201).send({ message: "Registered successfully" });
   } catch (err) {
     return res.status(500).send({ message: "Internal server error" });
