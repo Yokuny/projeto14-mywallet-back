@@ -2,7 +2,6 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
 const URI = process.env.DATABASE_URL;
-
 const dbConnection = async () => {
   const database = new MongoClient(URI);
   try {
@@ -12,4 +11,4 @@ const dbConnection = async () => {
     console.log({ message: err.message });
   }
 };
-export default dbConnection;
+export const db = dbConnection();
