@@ -3,6 +3,7 @@ import { v4 as newToken } from "uuid";
 import bcrypt from "bcrypt";
 
 export const postLogin = async (req, res) => {
+  const { email, password } = req.body;
   try {
     const record = await db.collection("users").findOne({ email });
     if (!record) {
@@ -17,8 +18,8 @@ export const postLogin = async (req, res) => {
     return res.status(500).send({ message: "Internal server error" });
   }
 };
-
 export const postCadastro = async (req, res) => {
+  const { name, email, password } = req.body;
   try {
     const Registered = await db.collection("users").findOne({ email });
     if (Registered) {

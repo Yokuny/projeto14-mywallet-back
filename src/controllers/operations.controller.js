@@ -15,6 +15,8 @@ export const getHome = async (req, res) => {
 };
 
 export const postNovaTransacao = async (req, res) => {
+  const { descricao, valor, data, tipo } = req.body;
+  const { token } = req.headers;
   try {
     const findingTonken = await db.collection("users").findOne({ token });
     if (!findingTonken) {
