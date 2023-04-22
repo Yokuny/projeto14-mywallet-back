@@ -11,4 +11,5 @@ const dbConnection = async () => {
     console.log({ message: err.message });
   }
 };
-export const db = dbConnection();
+export const db = await dbConnection();
+

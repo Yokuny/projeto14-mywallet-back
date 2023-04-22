@@ -1,18 +1,18 @@
 import { db } from "../database/database.connection.js";
 
-export async function authValidation(req, res, next) {
+const authValidation = async (req, res, next) => {
   const { authorization } = req.headers;
   const token = authorization?.replace("Bearer ", "");
+  console.log("> entrou auth");
   if (!token) return res.sendStatus(401);
-
   try {
-    const sessao = await db.collection("sessoes").findOne({ token });
-    if (!sessao) return res.sendStatus(401);
-
-    res.locals.sessao = sessao;
-
+    const session = await db.collection("users").findOne({ token: token });
+    if (!session) return res.status(401).send({ message: "Invalid token" });
+    res.locals.session = session;
+    console.log(">> saiu");
     next();
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send({ message: err.message });
   }
-}
+};
+export default authValidation;

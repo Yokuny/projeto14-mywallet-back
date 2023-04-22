@@ -11,7 +11,8 @@ export const postLogin = async (req, res) => {
     }
     if (bcrypt.compareSync(password, record.password)) {
       const token = newToken();
-      return res.status(200).send(token);
+      await db.collection("users").updateOne({ email }, { $set: { token } });
+      return res.status(200).send({ token, name: record.name });
     }
     return res.status(401).send({ message: "Invalid password" });
   } catch (err) {
