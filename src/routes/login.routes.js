@@ -5,6 +5,7 @@ import registerSchema from "../schemas/registerSchema.schema.js";
 import loginSchema from "../schemas/login.schema.js";
 
 const login = Router();
+
 login.post("/login", dataValidation(loginSchema), postLogin);
 login.post("/cadastro", dataValidation(registerSchema), postCadastro);
 
