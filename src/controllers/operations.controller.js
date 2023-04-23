@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 
 export const getHome = async (req, res) => {
   const { _id, nome } = res.locals.session;
+  console.log("get Home");
   try {
     const idHash = _id.toString();
     const transacoes = await db.collection("transaction").find({ idHash: idHash, nome: nome }).toArray();
@@ -13,6 +14,8 @@ export const getHome = async (req, res) => {
 };
 
 export const postNovaTransacao = async (req, res) => {
+  console.log("post transacao");
+
   const { _id, nome } = res.locals.session;
   const { descricao, valor } = req.body;
   const { tipo } = req.params;

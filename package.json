@@ -4,6 +4,16 @@
   "description": "my wallet back end",
   "main": "/src/app.js",
   "type": "module",
+  "dependencies": {
+    "mongodb": "^5.3.0",
+    "express": "^4.18.2",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "dayjs": "^1.11.7",
+    "uuid": "^9.0.0",
+    "cors": "^2.8.5",
+    "joi": "^17.9.1"
+  },
   "scripts": {
     "server": "nodemon src/app.js",
     "start": "node ./src/app.js"
@@ -24,16 +34,6 @@
     "url": "https://github.com/Yokuny/projeto14-mywallet-back/issues"
   },
   "homepage": "https://github.com/Yokuny/projeto14-mywallet-back#readme",
-  "dependencies": {
-    "bcrypt": "^5.1.0",
-    "cors": "^2.8.5",
-    "dayjs": "^1.11.7",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "joi": "^17.9.1",
-    "mongodb": "^5.3.0",
-    "uuid": "^9.0.0"
-  },
   "devDependencies": {
     "nodemon": "^2.0.22"
   }
