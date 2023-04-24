@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 
 export const postLogin = async (req, res) => {
   const { email, senha } = req.body;
-  console.log("post login");
 
   try {
     const record = await db.collection("users").findOne({ email });
@@ -22,7 +21,6 @@ export const postLogin = async (req, res) => {
 };
 export const postCadastro = async (req, res) => {
   const { nome, email, senha } = req.body;
-  console.log("post cadastr0");
 
   try {
     const Registered = await db.collection("users").findOne({ email });
